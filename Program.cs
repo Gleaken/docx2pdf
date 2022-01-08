@@ -1,6 +1,5 @@
 using Docx2Pdf;
 using Serilog;
-using Serilog.Events;
 
 var environment = Environment.GetEnvironmentVariable("");
 

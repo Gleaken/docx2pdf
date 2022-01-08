@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: docx2pdf
+spec:
+  selector:
+    matchLabels:
+      k8s-app: docx2pdf
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        k8s-app: docx2pdf
+    spec:
+      containers:
+        - name: docx2pdf
+          image: gleaken/docx2pdf:latest
+          imagePullPolicy: Always
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Production
+            - name: WorkingDirectory
+              value: /tmp
+            - name: DontDeletePdfFiles
+              value: "false"
+            - name: MaxFileSize
+              value: "10000000"
